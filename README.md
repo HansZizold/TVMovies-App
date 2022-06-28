@@ -31,9 +31,15 @@ Coming soon...
 - You need to have a code editor to be able to run the code. VSCode is most preferred.
 
 ### Setup
+To get a local copy up and running follw these simple example steps:
 
-- To clone the code press in the green button at the top right corner in this page
-- Select the method that you want to clone
+```
+    - Select the link with the code on the https code table in the repo
+    - Open a Terminal and write the command: git clone https://github.com/HansZizold/Javascript-Capstone
+    - $ cd into the directory and run npm install
+    - $ After the node_module module is installed successfully, run npm start
+    - $ The project will open on the browser with localhost:800
+```
 
 ### Install
 
@@ -47,9 +53,9 @@ Coming soon...
 
 👤 **Author1**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub:  [@githubhandle](https://github.com/ogiogiovictor)
+-Twitter: [Ogiogio Victor](https://twitter.com/a0df623fb9d9482)
+-LinkedIn:  [Ogiogio Victor](https://www.linkedin.com/in/ogiogio-victor-a096a0181/)
 
 👤 **Hans P. Zizold**
 
