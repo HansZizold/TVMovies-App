@@ -46,6 +46,17 @@ header a {
   color: black;
 }
 
+.input-category {
+  width: 250px;
+  padding: 8px 16px;
+  border: 2px solid black;
+  font-size: larger;
+  font-weight: bold;
+  background-color: white;
+  box-shadow: 2px 2px black;
+  border-radius: 4px;
+}
+
 .show-container {
   display: flex;
   flex-direction: row;
