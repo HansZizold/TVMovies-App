@@ -6,8 +6,78 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
 /* harmony import */ var _images_tv_logo_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(11);
+/* harmony import */ var _module_api_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12);
 
 
+
+
+//const baseURL = 'https://api.tvmaze.com/search/shows?q=';
+const query = 'star';
+const URL = `${_module_api_js__WEBPACK_IMPORTED_MODULE_2__["default"].API}` + query;
+
+const retrieveShow = async (URL) => {
+  const response = await fetch(URL);
+  const show = response.json();
+  return show;
+};
+
+const truncate = (str, max, suffix) => str.length < max ? str : `${str.substr(0, str.substr(0, max - suffix.length).lastIndexOf(' '))}${suffix}`;
+
+
+
+const addhtmlShows = (id, name, image, summary) => {
+  const showContainer = document.querySelector('.show-container');
+  const showItem = document.createElement('div');
+  showItem.classList.add('show-item');
+  showItem.innerHTML += `
+    <img src="${image}" alt="Shows">
+    <div class='show-info'>
+      <p>${name}</p>
+      <i class="fas fa-heart">  5 likes</i>
+    </div>
+    <div>${truncate(summary, 200, '...')}</div>
+    <button type="button" class="show_modal"  data-id="${id}">Comment</button>
+    <button type="button" class="loaded" reserve-id="${id}">Reservation</button>
+    `;
+  showContainer.appendChild(showItem);
+};
+
+var ebModal = document.getElementById('mainModalArea');
+document.querySelectorAll('.show_modal').forEach((row) => row.addEventListener('click', () => displayModal(row.getAttribute('data-id'))));
+
+const displayModal = (j) => { 
+  alert("i am here")
+  console.log(j)
+  ebModal.style.display = "block";
+}
+
+// Get the <span> element that closes the modal
+var ebSpan = document.getElementsByClassName("close_modal")[0];
+
+// When the user clicks on <span> (x), close the modal
+ebSpan.onclick = function() {
+    ebModal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == ebModal) {
+        ebModal.style.display = "none";
+    }
+}
+
+
+const show = (URL) => {
+  const promiseShow = retrieveShow(URL);
+  promiseShow.then((show) => {
+    show.forEach((e) => {
+      addhtmlShows(e.show.id, e.show.name, e.show.image.medium, e.show.summary);
+    });
+  });
+};
+
+
+show(URL);
 
 
 /***/ }),
@@ -360,7 +430,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@200;700&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ":root {\r\n  --font: \"Poppins\", sans-serif;\r\n  --bgwhite: #fff;\r\n  --bgcontact: #6070ff;\r\n  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);\r\n  --bgbrown: #e5e5e5;\r\n}\r\n\r\n* {\r\n  padding: 0;\r\n  margin: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  font-family: var(--font);\r\n}\r\n\r\n.main {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  margin-left: 5%;\r\n  margin-right: 5%;\r\n}\r\n\r\nheader {\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  margin: 32px 0;\r\n}\r\n\r\nheader img {\r\n  width: 80px;\r\n  height: 80px;\r\n  margin: 0 16px;\r\n}\r\n\r\nheader a {\r\n  text-decoration: none;\r\n  margin: 0 16px;\r\n  font-size: x-large;\r\n  color: black;\r\n}\r\n\r\nfooter {\r\n  position: absolute;\r\n  bottom: 0;\r\n  width: 100%;\r\n}\r\n\r\nfooter div {\r\n  margin-left: 5%;\r\n  margin-right: 5%;\r\n  font-size: 15px;\r\n  padding: 10px;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ":root {\r\n  --font: \"Poppins\", sans-serif;\r\n  --bgwhite: #fff;\r\n  --bgcontact: #6070ff;\r\n  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);\r\n  --bgbrown: #e5e5e5;\r\n}\r\n\r\n* {\r\n  padding: 0;\r\n  margin: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  font-family: var(--font);\r\n}\r\n\r\n.main {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  margin-left: 5%;\r\n  margin-right: 5%;\r\n}\r\n\r\nheader {\r\n  display: flex;\r\n  justify-content: flex-start;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  margin: 32px 0;\r\n}\r\n\r\nheader img {\r\n  max-width: 72px;\r\n  margin: 0 16px;\r\n}\r\n\r\nheader a {\r\n  text-decoration: none;\r\n  margin: 0 16px;\r\n  font-size: x-large;\r\n  color: black;\r\n}\r\n\r\n.show-container {\r\n  display: flex;\r\n  flex-direction: row;\r\n  flex-wrap: wrap;\r\n  justify-content: center;\r\n  width: 96vw;\r\n  margin: 16px 8vw;\r\n}\r\n\r\n.show-item {\r\n  width: 215px;\r\n  margin: 24px 3vw;\r\n}\r\n\r\ndiv img {\r\n  width: 215px;\r\n}\r\n\r\n.show-info {\r\n  display: flex;\r\n  justify-content: space-between;\r\n}\r\n\r\nbutton {\r\n  width: 215px;\r\n  border: 2px solid black;\r\n  font-size: larger;\r\n  font-weight: bold;\r\n  background-color: white;\r\n  box-shadow: 2px 2px black;\r\n  border-radius: 4px;\r\n}\r\n\r\nfooter {\r\n  /* display: flex; */\r\n  position: relative;\r\n  bottom: 0;\r\n  width: 100%;\r\n}\r\n\r\nfooter div {\r\n  margin-left: 5%;\r\n  margin-right: 5%;\r\n  font-size: 15px;\r\n  padding: 10px;\r\n}\r\n\r\nbutton {\r\n  cursor: pointer;\r\n  margin-bottom: 15px;\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n/********************** MODAL SECTION ****************************/\r\n.popup_modal {\r\n  display: none; /* Hidden by default */\r\n  position: fixed; /* Stay in place */\r\n  z-index: 1; /* Sit on top */\r\n  padding-top: 100px; /* Location of the box */\r\n  left: 0;\r\n  top: 0;\r\n  width: 100%; /* Full width */\r\n  height: 100%; /* Full height */\r\n  overflow: auto; /* Enable scroll if needed */\r\n  background-color: rgb(0, 0, 0); /* Fallback color */\r\n  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */\r\n}\r\n\r\n/* Modal Content */\r\n.popup_modal_content {\r\n  background-color: #fefefe;\r\n  margin: 0 auto;\r\n  padding: 20px;\r\n  border: 1px solid #888;\r\n  width: 50%;\r\n  height: auto;\r\n  border-radius: 8px;\r\n}\r\n\r\n/* The Close Button */\r\n.close_modal {\r\n  color: #aaa;\r\n  float: right;\r\n  font-size: 28px;\r\n  font-weight: bold;\r\n}\r\n\r\n.close_modal:hover,\r\n.close_modal:focus {\r\n  color: #000;\r\n  text-decoration: none;\r\n  cursor: pointer;\r\n}\r\n\r\n/********************** END OF MODAL SECTION ****************************/\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -487,6 +557,18 @@ module.exports = function (cssWithMappingToString) {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 module.exports = __webpack_require__.p + "23abaa54e786530b2fb6.jpg";
+
+/***/ }),
+/* 12 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+    API: 'https://api.tvmaze.com/search/shows?q=',
+  });
 
 /***/ })
 ],
