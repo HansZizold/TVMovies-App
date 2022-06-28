@@ -28,14 +28,14 @@ body {
 
 header {
   display: flex;
+  justify-content: flex-start;
   flex-direction: row;
   align-items: center;
   margin: 32px 0;
 }
 
 header img {
-  width: 80px;
-  height: 80px;
+  max-width: 72px;
   margin: 0 16px;
 }
 
@@ -44,6 +44,50 @@ header a {
   margin: 0 16px;
   font-size: x-large;
   color: black;
+}
+
+.input-category {
+  width: 250px;
+  padding: 8px 16px;
+  border: 2px solid black;
+  font-size: larger;
+  font-weight: bold;
+  background-color: white;
+  box-shadow: 2px 2px black;
+  border-radius: 4px;
+}
+
+.show-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 96vw;
+  margin: 16px 8vw;
+}
+
+.show-item {
+  width: 215px;
+  margin: 24px 3vw;
+}
+
+div img {
+  width: 215px;
+}
+
+.show-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  width: 215px;
+  border: 2px solid black;
+  font-size: larger;
+  font-weight: bold;
+  background-color: white;
+  box-shadow: 2px 2px black;
+  border-radius: 4px;
 }
 
 footer {
