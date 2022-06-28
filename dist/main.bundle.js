@@ -5,6 +5,8 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _images_tv_logo_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(11);
+
 
 
 
@@ -479,6 +481,12 @@ module.exports = function (cssWithMappingToString) {
 
   return list;
 };
+
+/***/ }),
+/* 11 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "23abaa54e786530b2fb6.jpg";
 
 /***/ })
 ],

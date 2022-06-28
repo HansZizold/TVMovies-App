@@ -18,6 +18,8 @@
 
 [Tv Show Logo Vectors by Vecteezy](https://www.vecteezy.com/)
 
+[Fontawesome](https://fontawesome.com/)
+
 ## Live Demo (if available)
 
 Coming soon...
@@ -51,7 +53,7 @@ To get a local copy up and running follw these simple example steps:
 
 ## Authors
 
-👤 **Author1**
+👤 **Ogiogio Victor**
 
 - GitHub:  [@githubhandle](https://github.com/ogiogiovictor)
 -Twitter: [Ogiogio Victor](https://twitter.com/a0df623fb9d9482)
