@@ -11,6 +11,10 @@
 - Frameworks
 - Technologies used
 
+## Resources
+
+[Tv Show Logo Vectors by Vecteezy](https://www.vecteezy.com/)
+
 ## Live Demo (if available)
 
 [Live Demo Link](https://livedemo.com)
@@ -71,3 +75,4 @@ Give a ⭐️ if you like this project!
 ## 📝 License
 
 This project is [MIT](./MIT.md) licensed.
+
