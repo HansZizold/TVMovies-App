@@ -1,7 +1,7 @@
 import './style.css';
 import './images/tv-logo.jpg';
 import show from './modules/show.js';
-import baseURL from './modules/api.js'
+import baseURL from './modules/api.js';
 
 const defaultURL = 'https://api.tvmaze.com/search/shows?q=girls';
 let URL = '';
@@ -12,14 +12,12 @@ category.addEventListener('keypress', (e) => {
     e.preventDefault();
     const query = category.value;
     localStorage.setItem('query', query);
-    console.log("none" + query);
-    URL = `${baseURL.API}` + query;
+    console.log(`none${query}`);
+    URL = `${baseURL.API}${query}`;
     show(URL);
     category.value = '';
   }
 });
-
-
 
 show(defaultURL);
 localStorage.setItem('query', 'girls');

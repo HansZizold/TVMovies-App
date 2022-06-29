@@ -1,43 +1,24 @@
 import AddComment from './addComment.js';
-import { retrieveShow } from './retrieveshow.js';
-import BaseApi from './api.js';
+// import { retrieveShow } from './retrieveshow.js';
+// import BaseApi from './api.js';
 
+const popupForm = (e) => {
+  // const promiseShow = retrieveShow(`${BaseApi.Cmt}` + e.id);
+  // console.log(`${BaseApi.Cmt}` + e.id)
+  // let content = '';
+  // promiseShow.then((show) => {
 
-const retrieveComment = () => {
-    const promiseShow = retrieveShow(URL);
-    promiseShow.then((show) => {
-        show.forEach((e) => { 
-     document.getElementById('listComment').innerHTML = `
-        <div>
-            <h3>Comment(0)</h3>
-            <ul>
-                <li>${e.creation_date}: ${e.comment} <small>by: ${e.username}</small></li>
-            </ul>
-        </div>
-            `;
-        });
-    });
-}
+  //     document.getElementById('listComment').innerHTML = `
+  //     <div>
+  //         <h3>Comment(0)</h3>
+  //         <ul>
+  //             <li>${show.creation_date}: ${show.comment} <small>by: ${show.username}</small></li>
+  //         </ul>
+  //     </div>
+  //         `;
+  // })
 
-
-const popupForm = (e) => { 
-    // const promiseShow = retrieveShow(`${BaseApi.Cmt}` + e.id);
-    // console.log(`${BaseApi.Cmt}` + e.id)
-    // let content = '';
-    // promiseShow.then((show) => { 
-        
-    //     document.getElementById('listComment').innerHTML = `
-    //     <div>
-    //         <h3>Comment(0)</h3>
-    //         <ul>
-    //             <li>${show.creation_date}: ${show.comment} <small>by: ${show.username}</small></li>
-    //         </ul>
-    //     </div>
-    //         `;
-    // })
-
-    document.querySelector('#popup-section').innerHTML = 
-    `<div class="pop-container">
+  document.querySelector('#popup-section').innerHTML = `<div class="pop-container">
     <h2>${e.name} </h2> <span>(5 likes)</span><hr/>
     <div class="popupflex">
     <img src="${e.image.medium}" />
@@ -65,26 +46,23 @@ const popupForm = (e) => {
     </form>
     </div>`;
 
-    //Posting the form element
-    const cForm =  document.getElementById('commentForm');
-    const itemID = document.getElementById('item_id');
-    const commentPost = document.getElementById('sendcomment');
-    const urlComment = document.getElementById('type');
-    const username = document.getElementById('username');
-    const msg = document.getElementById('successMsg');
+  // Posting the form element
+  const cForm = document.getElementById('commentForm');
+  const itemID = document.getElementById('item_id');
+  const commentPost = document.getElementById('sendcomment');
+  const urlComment = document.getElementById('type');
+  const username = document.getElementById('username');
+  const msg = document.getElementById('successMsg');
 
-    cForm.addEventListener('submit',  async (e) => {
-
-        e.preventDefault();
-        const sendData = await AddComment.pushCommentToApi(itemID.value, username.value, commentPost.value, urlComment.value);
-        console.log(sendData);
-        if(sendData == 'Created'){
-            msg.textContent = "Comment Sucessfully Added";
-            //document.getElementById('mainModalArea').style.display = 'none';
-        }
-
-    })
-}
-
+  cForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const sendData = await AddComment.pushCommentToApi(itemID.value, username.value, commentPost.value, urlComment.value);
+    console.log(sendData);
+    if (sendData === 'Created') {
+      msg.textContent = 'Comment Sucessfully Added';
+      // document.getElementById('mainModalArea').style.display = 'none';
+    }
+  });
+};
 
 export default popupForm;

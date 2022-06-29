@@ -65,13 +65,14 @@ header a {
   justify-content: center;
   width: 96vw;
   margin: 16px 8vw;
-  
 }
 
 .show-item {
   width: 230px;
+
   /* padding: 15px; */
   margin: 15px;
+
   /* margin: 24px 3vw; */
   box-shadow: var(--box-shadow);
   border: 1px solid var(--bgbrown);
@@ -81,19 +82,15 @@ header a {
   width: 100%;
 }
 
-div img {
-  /* width: 215px; */
-}
-
 .show-info {
   display: flex;
   justify-content: space-between;
   padding: 10px;
 }
 
-.show-info p{
+.show-info p {
   font-weight: bold;
-  font-family: var( --font);
+  font-family: var(--font);
 }
 
 .summary {
@@ -103,7 +100,9 @@ div img {
 
 button {
   width: 200px;
+
   /* border: 2px solid black; */
+
   /* font-size: larger;
   font-weight: bold; */
   outline: none;
@@ -134,9 +133,10 @@ footer div {
   display: flex;
   flex-direction: row;
   gap: 4%;
-  padding:10px;
+  padding: 10px;
 }
-.popupflex img{
+
+.popupflex img {
   width: 20vh;
 }
 
@@ -144,7 +144,8 @@ footer div {
   list-style-type: none;
 }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   margin-bottom: 5px;
 }
