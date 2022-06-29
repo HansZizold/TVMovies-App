@@ -154,8 +154,6 @@ textarea {
   color: var(--bgreen);
 }
 
-
-
 /********************** MODAL SECTION ****************************/
 .popup_modal {
   display: none; /* Hidden by default */
