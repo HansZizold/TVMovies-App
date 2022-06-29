@@ -4,10 +4,14 @@ import BaseApi from './api.js';
 
 const popupForm = (e) => {
   const promiseShow = retrieveShow(`${BaseApi.Cmt}${e.id}`);
-  console.log(`${BaseApi.Cmt}${e.id}`);
+  let commentLength = 0;
+
   let content = '';
   promiseShow.then((show) => {
+     commentLength = show.length;
+
     if (show.length > 0) {
+        content = `<h5>Comment (${commentLength})</h5> <hr/>`;
       show.forEach((e) => {
         content += `<p><b><small> ${e.creation_date} : </small></b>   ${e.comment} <small>by: ${e.username}</small></p>`;
         return true;
@@ -36,14 +40,14 @@ const popupForm = (e) => {
     <label for="name">Your Name</label>
     <input type="text" id="username" name="username" maxlength="30" placeholder="Enter your name" required />
      
-    <label for="name">Comments</label>
+    <label for="name">Your Insight</label>
     <textarea row="40" cols="10" name="sendcomment" id="sendcomment" required></textarea> 
     <input type="hidden" name="item_id" id="item_id" value="${e.id}" />
     <input type="hidden" name="type" id="type" value="comments" />
     <input type="submit" value="SubmitForm"/>
     </form>
     </div>
-    <hr/><h5>Comment(0)</h5> 
+   
     <div id="listComment"></div>
     `;
 
