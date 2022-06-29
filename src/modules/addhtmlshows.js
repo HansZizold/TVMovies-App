@@ -6,6 +6,7 @@ const truncate = (str, max, suffix) => str.length < max ? str : `${str.substr(0,
 var ebModal = document.getElementById('mainModalArea');
 
 const addhtmlShows = (id, name, image, summary, url) => {
+  const tx = summary !== null ? truncate(summary, 100, '...')  : 'no summary';
   const showContainer = document.querySelector('.show-container');
   const showItem = document.createElement('div');
   showItem.classList.add('show-item');
@@ -15,7 +16,7 @@ const addhtmlShows = (id, name, image, summary, url) => {
       <p>${name}</p>
       <i class="fas fa-heart">  5 likes</i>
     </div>
-    <div class="summary">${truncate(summary, 100, '...')}</div>
+    <div class="summary">${tx}</div>
     <button type="button" class="show_modal"  data-id="${id}">Comment</button>
     <button type="button" class="loaded" reserve-id="${id}">Reservation</button>
     `;

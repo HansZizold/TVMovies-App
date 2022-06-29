@@ -1,5 +1,6 @@
 import AddComment from './addComment.js';
 import { retrieveShow } from './retrieveshow.js';
+import BaseApi from './api.js';
 
 
 const retrieveComment = () => {
@@ -20,6 +21,21 @@ const retrieveComment = () => {
 
 
 const popupForm = (e) => { 
+    // const promiseShow = retrieveShow(`${BaseApi.Cmt}` + e.id);
+    // console.log(`${BaseApi.Cmt}` + e.id)
+    // let content = '';
+    // promiseShow.then((show) => { 
+        
+    //     document.getElementById('listComment').innerHTML = `
+    //     <div>
+    //         <h3>Comment(0)</h3>
+    //         <ul>
+    //             <li>${show.creation_date}: ${show.comment} <small>by: ${show.username}</small></li>
+    //         </ul>
+    //     </div>
+    //         `;
+    // })
+
     document.querySelector('#popup-section').innerHTML = 
     `<div class="pop-container">
     <h2>${e.name} </h2> <span>(5 likes)</span><hr/>
@@ -33,14 +49,7 @@ const popupForm = (e) => {
         <li><b>Genre:</b> ${e.genres}</li>
     </ul>
   
- 
-    <div id="listComment">
-        <h3>Comment(0)</h3>
-    <ul>
-        <li>creation_date: close it now <small>by: username</small></li>
-        <li>creation_date: work with us<small>by: victor</small></li>
-    </ul>
-    </div>
+    <div id="listComment"></div>
 
     </div>
     <form class="commentForm" id="commentForm">
