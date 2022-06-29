@@ -9,9 +9,8 @@ const popupForm = (e) => {
   promiseShow.then((show) => {
     if (show.length > 0) {
       show.forEach((e) => {
-        content += `<p><b>${e.creation_date}:</b> ${e.comment} <small>by: ${e.username}</small></p>`;
+        content += `<p><b><small> ${e.creation_date} : </small></b>   ${e.comment} <small>by: ${e.username}</small></p>`;
         return true;
-       
       });
     } else {
       content += '<p class="text-center py-3">No comments availables</p>';
