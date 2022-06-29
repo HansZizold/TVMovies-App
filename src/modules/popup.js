@@ -8,10 +8,10 @@ const popupForm = (e) => {
 
   let content = '';
   promiseShow.then((show) => {
-     commentLength = show.length;
+    commentLength = show.length;
 
     if (show.length > 0) {
-        content = `<h5>Comment (${commentLength})</h5> <hr/>`;
+      content = `<h5>Comment (${commentLength})</h5> <hr/>`;
       show.forEach((e) => {
         content += `<p><b><small> ${e.creation_date} : </small></b>   ${e.comment} <small>by: ${e.username}</small></p>`;
         return true;

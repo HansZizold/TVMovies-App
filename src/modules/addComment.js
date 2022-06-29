@@ -9,7 +9,7 @@ class AddComment {
         comment: commentPost,
       };
 
-      const postApiCall = await postComment(`${baseURL.Inv}`+`${urlComment}`, mbody);
+      const postApiCall = await postComment(`${baseURL.Inv + urlComment}`, mbody);
       return postApiCall;
     }
 }
