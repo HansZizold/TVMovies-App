@@ -13,11 +13,11 @@ const popupForm = (e) => {
     if (show.length > 0) {
       content = `<h5>Comment (${commentLength})</h5> <hr/>`;
       show.forEach((e) => {
-        content += `<p><b><small> ${e.creation_date} : </small></b>   ${e.comment} <small>by: ${e.username}</small></p>`;
+        content += `<p><b><small> ${e.creation_date}: </small></b>   ${e.comment} <small>by: ${e.username}</small></p>`;
         return true;
       });
     } else {
-      content += '<p class="text-center py-3">No comments availables</p>';
+      // content += '<p class="text-center py-3">No comments availables</p>';
     }
     document.getElementById('listComment').innerHTML = content;
   });
@@ -65,7 +65,17 @@ const popupForm = (e) => {
     console.log(sendData);
     if (sendData === 'Created') {
       msg.textContent = 'Comment Sucessfully Added';
-      // document.getElementById('mainModalArea').style.display = 'none';
+      content = '';
+      // Consult the show API again and update the html content
+      const promiseShowUpdated = retrieveShow(`${BaseApi.Cmt}${itemID.value}`);
+      promiseShowUpdated.then((show) => {
+        commentLength = show.length;
+        content = `<h5>Comment (${commentLength})</h5> <hr/>`;
+        show.forEach((e) => {
+          content += `<p><b><small> ${e.creation_date}: </small></b>   ${e.comment} <small>by: ${e.username}</small></p>`;
+          });
+        document.getElementById('listComment').innerHTML = content;
+      });
     }
   });
 };
