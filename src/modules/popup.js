@@ -1,22 +1,23 @@
 import AddComment from './addComment.js';
-// import { retrieveShow } from './retrieveshow.js';
-// import BaseApi from './api.js';
+import { retrieveShow } from './retrieveshow.js';
+import BaseApi from './api.js';
 
 const popupForm = (e) => {
-  // const promiseShow = retrieveShow(`${BaseApi.Cmt}` + e.id);
-  // console.log(`${BaseApi.Cmt}` + e.id)
-  // let content = '';
-  // promiseShow.then((show) => {
-
-  //     document.getElementById('listComment').innerHTML = `
-  //     <div>
-  //         <h3>Comment(0)</h3>
-  //         <ul>
-  //             <li>${show.creation_date}: ${show.comment} <small>by: ${show.username}</small></li>
-  //         </ul>
-  //     </div>
-  //         `;
-  // })
+  const promiseShow = retrieveShow(`${BaseApi.Cmt}${e.id}`);
+  console.log(`${BaseApi.Cmt}${e.id}`);
+  let content = '';
+  promiseShow.then((show) => {
+    if (show.length > 0) {
+      show.forEach((e) => {
+        content += `<p><b>${e.creation_date}:</b> ${e.comment} <small>by: ${e.username}</small></p>`;
+        return true;
+       
+      });
+    } else {
+      content += '<p class="text-center py-3">No comments availables</p>';
+    }
+    document.getElementById('listComment').innerHTML = content;
+  });
 
   document.querySelector('#popup-section').innerHTML = `<div class="pop-container">
     <h2>${e.name} </h2> <span>(5 likes)</span><hr/>
@@ -30,8 +31,6 @@ const popupForm = (e) => {
         <li><b>Genre:</b> ${e.genres}</li>
     </ul>
   
-    <div id="listComment"></div>
-
     </div>
     <form class="commentForm" id="commentForm">
     <div id="successMsg"></div>
@@ -44,7 +43,10 @@ const popupForm = (e) => {
     <input type="hidden" name="type" id="type" value="comments" />
     <input type="submit" value="SubmitForm"/>
     </form>
-    </div>`;
+    </div>
+    <hr/><h5>Comment(0)</h5> 
+    <div id="listComment"></div>
+    `;
 
   // Posting the form element
   const cForm = document.getElementById('commentForm');

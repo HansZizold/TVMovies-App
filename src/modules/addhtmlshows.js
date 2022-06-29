@@ -5,6 +5,15 @@ const truncate = (str, max, suffix) => (str.length < max ? str : `${str.substr(0
 
 const ebModal = document.getElementById('mainModalArea');
 
+const displayModal = (j) => {
+  document.querySelector('#popup-section').innerHTML = 'Loading,please wait..';
+  const promiseShow = retrieveShow(`https://api.tvmaze.com/shows/${j}`);
+  promiseShow.then((e) => {
+    popupForm(e);
+  });
+  ebModal.style.display = 'block';
+};
+
 const addhtmlShows = (id, name, image, summary) => {
   const tx = summary !== null ? truncate(summary, 100, '...') : 'no summary';
   const showContainer = document.querySelector('.show-container');
@@ -25,16 +34,6 @@ const addhtmlShows = (id, name, image, summary) => {
   document.querySelectorAll('.show_modal').forEach((row) => row.addEventListener('click', () => displayModal(row.getAttribute('data-id'))));
 };
 
-const displayModal = (j) => {
-  document.querySelector('#popup-section').innerHTML = 'Loading,please wait..';
-  const promiseShow = retrieveShow(`https://api.tvmaze.com/shows/${j}`);
-  promiseShow.then((e) => {
-    popupForm(e);
-  });
-  ebModal.style.display = 'block';
-};
-
-console.log(displayModal());
 // Get the <span> element that closes the modal
 const ebSpan = document.getElementsByClassName('close_modal')[0];
 
