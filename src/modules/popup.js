@@ -73,7 +73,7 @@ const popupForm = (e) => {
         content = `<h5>Comment (${commentLength})</h5> <hr/>`;
         show.forEach((e) => {
           content += `<p><b><small> ${e.creation_date}: </small></b>   ${e.comment} <small>by: ${e.username}</small></p>`;
-          });
+        });
         document.getElementById('listComment').innerHTML = content;
       });
     }
