@@ -6,6 +6,7 @@
   --bgcontact: #6070ff;
   --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   --bgbrown: #e5e5e5;
+  --bgreen: green;
 }
 
 * {
@@ -31,11 +32,11 @@ header {
   justify-content: flex-start;
   flex-direction: row;
   align-items: center;
-  margin: 32px 0;
+  margin: 20px 0;
 }
 
 header img {
-  max-width: 72px;
+  max-width: 60px;
   margin: 0 16px;
 }
 
@@ -64,34 +65,60 @@ header a {
   justify-content: center;
   width: 96vw;
   margin: 16px 8vw;
+  
 }
 
 .show-item {
-  width: 215px;
-  margin: 24px 3vw;
+  width: 230px;
+  /* padding: 15px; */
+  margin: 15px;
+  /* margin: 24px 3vw; */
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--bgbrown);
+}
+
+.show-item img {
+  width: 100%;
 }
 
 div img {
-  width: 215px;
+  /* width: 215px; */
 }
 
 .show-info {
   display: flex;
   justify-content: space-between;
+  padding: 10px;
+}
+
+.show-info p{
+  font-weight: bold;
+  font-family: var( --font);
+}
+
+.summary {
+  padding: 10px;
+  text-align: justify;
 }
 
 button {
-  width: 215px;
-  border: 2px solid black;
-  font-size: larger;
-  font-weight: bold;
-  background-color: white;
-  box-shadow: 2px 2px black;
+  width: 200px;
+  /* border: 2px solid black; */
+  /* font-size: larger;
+  font-weight: bold; */
+  outline: none;
+  background-color: var(--bgbrown);
+  box-shadow: 1px 2px var(--bgbrown);
   border-radius: 4px;
+  padding-left: 20px;
+  padding-right: 20px;
+  cursor: pointer;
+  margin-left: 20px;
+  margin-bottom: 10px;
 }
 
 footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
 }
@@ -102,3 +129,71 @@ footer div {
   font-size: 15px;
   padding: 10px;
 }
+
+.popupflex {
+  display: flex;
+  flex-direction: row;
+  gap: 4%;
+  padding:10px;
+}
+.popupflex img{
+  width: 20vh;
+}
+
+.popupflex ul li {
+  list-style-type: none;
+}
+
+input, textarea {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.successMsg {
+  color: var(--bgreen);
+}
+
+
+
+/********************** MODAL SECTION ****************************/
+.popup_modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.popup_modal_content {
+  background-color: #fefefe;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* The Close Button */
+.close_modal {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close_modal:hover,
+.close_modal:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/********************** END OF MODAL SECTION ****************************/
