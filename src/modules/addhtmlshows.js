@@ -14,7 +14,7 @@ const displayModal = (j) => {
   ebModal.style.display = 'block';
 };
 
-const addhtmlShows = (id, name, image, summary) => {
+const addhtmlShows = (id, name, image, summary, likes) => {
   const tx = summary !== null ? truncate(summary, 100, '...') : 'no summary';
   const showContainer = document.querySelector('.show-container');
   const showItem = document.createElement('div');
@@ -23,7 +23,7 @@ const addhtmlShows = (id, name, image, summary) => {
     <img src="${image}" alt="Shows">
     <div class='show-info'>
       <p>${name}</p>
-      <i class="fas fa-heart">  5 likes</i>
+      <i class="fas fa-heart">  ${likes} likes</i>
     </div>
     <div class="summary">${tx}</div>
     <button type="button" class="show_modal"  data-id="${id}">Comment</button>
