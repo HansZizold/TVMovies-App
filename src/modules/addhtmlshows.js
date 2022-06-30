@@ -20,12 +20,14 @@ const addhtmlShows = (id, name, image, summary) => {
   let mLikes = 0;
   const promiseLikes = retrieveLikes(BaseApi.Likes);
   promiseLikes.then((like) => {
+    //console.log(like);
     like.forEach((e) => {
       if (Number(e.item_id) === id) {
+        console.log(e.likes + '-' + id);
         mLikes = e.likes;
-        if (e.item_id != null) {
+        //if (e.item_id != null) {
           document.getElementById('mylikes').innerHTML = `${mLikes} Likes`;
-        }
+       // }
         // return true;
       }
     });
@@ -39,7 +41,7 @@ const addhtmlShows = (id, name, image, summary) => {
     <img src="${image}" alt="Shows">
     <div class='show-info'>
       <p>${name}</p>
-      <i class="fas fa-heart"> <small data-id="${id}" id='mylikes'>0 Likes</small></i>
+      <i class="fas fa-heart" id="${id}"> <small data-id="${id}" id='mylikes'>0 Likes</small> ${id}</i>
     </div>
     <div class="summary">${tx}</div>
     <button type="button" class="show_modal"  data-id="${id}">Comment</button>
