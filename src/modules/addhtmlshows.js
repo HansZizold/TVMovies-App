@@ -18,6 +18,7 @@ const displayModal = (j) => {
 
 const addhtmlShows = (id, name, image, summary) => {
   let mLikes = 0;
+
   const promiseLikes = retrieveLikes(BaseApi.Likes);
   promiseLikes.then((like) => {
     like.forEach((e) => {
@@ -40,6 +41,7 @@ const addhtmlShows = (id, name, image, summary) => {
     <div class='show-info'>
       <p>${name}</p>
       <i class="fas fa-heart"> <small data-id="${id}" id='mylikes'>0 Likes</small></i>
+       
     </div>
     <div class="summary">${tx}</div>
     <button type="button" class="show_modal"  data-id="${id}">Comment</button>
