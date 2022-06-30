@@ -154,6 +154,9 @@ textarea {
   color: var(--bgreen);
 }
 
+.fa-heart {
+  cursor: pointer;
+}
 /********************** MODAL SECTION ****************************/
 .popup_modal {
   display: none; /* Hidden by default */
