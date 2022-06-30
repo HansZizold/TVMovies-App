@@ -1,5 +1,7 @@
 import { retrieveShow } from './retrieveshow.js';
 import popupForm from './popup.js';
+import retrieveLikes from './retrievelikes.js';
+import BaseApi from './api.js';
 
 const truncate = (str, max, suffix) => (str.length < max ? str : `${str.substr(0, str.substr(0, max - suffix.length).lastIndexOf(' '))}${suffix}`);
 
@@ -14,7 +16,21 @@ const displayModal = (j) => {
   ebModal.style.display = 'block';
 };
 
-const addhtmlShows = (id, name, image, summary, likes) => {
+const addhtmlShows = (id, name, image, summary) => {
+  let mLikes = 0;
+  const promiseLikes = retrieveLikes(BaseApi.Likes);
+  promiseLikes.then((like) => {
+    like.forEach((e) => {
+      if (Number(e.item_id) === id) {
+        mLikes = e.likes;
+        if (e.item_id != null) {
+          document.getElementById('mylikes').innerHTML = `${mLikes} Likes`;
+        }
+        // return true;
+      }
+    });
+  });
+
   const tx = summary !== null ? truncate(summary, 100, '...') : 'no summary';
   const showContainer = document.querySelector('.show-container');
   const showItem = document.createElement('div');
@@ -23,7 +39,7 @@ const addhtmlShows = (id, name, image, summary, likes) => {
     <img src="${image}" alt="Shows">
     <div class='show-info'>
       <p>${name}</p>
-      <i class="fas fa-heart">  ${likes} likes</i>
+      <i class="fas fa-heart"> <small data-id="${id}" id='mylikes'>0 Likes</small></i>
     </div>
     <div class="summary">${tx}</div>
     <button type="button" class="show_modal"  data-id="${id}">Comment</button>
