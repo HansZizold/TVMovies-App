@@ -24,16 +24,14 @@ const addhtmlShows = (id, name, image, summary) => {
       if (Number(e.item_id) === id) {
         console.log(e.likes + '-' + id);
         mLikes = e.likes;
-        //if (e.item_id != null) {
+        if (e.item_id != null) {
           document.querySelectorAll('[data-id]').forEach((elem) => {
             if(Number(elem.getAttribute('data-id')) === id) {
               elem.innerHTML = `${mLikes} Likes`;
             }
-            // console.log(elem.getAttribute('data-id'));
           })
-          // document.getElementById('mylikes').innerHTML = `${mLikes} Likes`;
-       // }
-        // return true;
+        }
+       // return true;
       }
     });
   });
