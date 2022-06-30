@@ -4,7 +4,7 @@ import show from './modules/show.js';
 import baseURL from './modules/api.js';
 import getCategory from './modules/getcategory.js';
 
-const defaultURL = 'https://api.tvmaze.com/search/shows?q=girls';
+// const defaultURL = 'https://api.tvmaze.com/search/shows?q=girls';
 let URL = '';
 const category = document.querySelector('.input-category');
 
