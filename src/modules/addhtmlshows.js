@@ -24,21 +24,12 @@ const addhtmlShows = (id, name, image, summary) => {
   promiseLikes.then((like) =>  { 
     like.forEach((e) => { 
       if(Number(e.item_id) === id) { 
-       // console.log(e.likes, '-', id)
        mLikes = e.likes;
        if (e.item_id != null) {
         document.getElementById(`mylikes`).innerHTML = `${mLikes} Likes`;
-       // document.getElementById(`mylikes${e.item_id}`).innerHTML = `${mLikes} Likes`;
       }
       return true;
-      //  if(mLikes > 0){
-      //   document.getElementById('mylikes').innerHTML = `${mLikes} Likes`;
-      //  }else if(mLikes === '0' || mLikes === 0 || mLikes === ''){
-      //   document.getElementById('mylikes').innerHTML = `0 Likes`;
-      //  }else {
-      //   document.getElementById('mylikes').innerHTML = `0 Likes`;
-      //  }
-      
+     
       }
     })
    });
