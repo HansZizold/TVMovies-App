@@ -20,13 +20,18 @@ const addhtmlShows = (id, name, image, summary) => {
   let mLikes = 0;
   const promiseLikes = retrieveLikes(BaseApi.Likes);
   promiseLikes.then((like) => {
-    //console.log(like);
     like.forEach((e) => {
       if (Number(e.item_id) === id) {
         console.log(e.likes + '-' + id);
         mLikes = e.likes;
         //if (e.item_id != null) {
-          document.getElementById('mylikes').innerHTML = `${mLikes} Likes`;
+          document.querySelectorAll('[data-id]').forEach((elem) => {
+            if(Number(elem.getAttribute('data-id')) === id) {
+              elem.innerHTML = `${mLikes} Likes`;
+            }
+            // console.log(elem.getAttribute('data-id'));
+          })
+          // document.getElementById('mylikes').innerHTML = `${mLikes} Likes`;
        // }
         // return true;
       }
