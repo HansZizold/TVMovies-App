@@ -5,13 +5,20 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _images_tv_logo_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(11);
-/* harmony import */ var _modules_show_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(12);
-/* harmony import */ var _modules_api_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(17);
-/* harmony import */ var _modules_getcategory_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(19);
+/* harmony import */ var _images_tv_logo_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13);
+/* harmony import */ var _images_bg_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(14);
+/* harmony import */ var _modules_show_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(15);
+/* harmony import */ var _modules_api_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(20);
+/* harmony import */ var _modules_getcategory_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(23);
+/* harmony import */ var _modules_addComment_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(19);
+/* harmony import */ var _modules_addhtmllikes_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(24);
 
 
 
+
+
+
+// import { postComment } from './modules/retrieveshow.js';
 
 
 
@@ -23,30 +30,28 @@ category.addEventListener('keypress', (e) => {
   if (e.key === 'Enter' && category.value) {
     e.preventDefault();
     const query = category.value;
-    URL = `${_modules_api_js__WEBPACK_IMPORTED_MODULE_3__["default"].API}${query}`;
-    (0,_modules_show_js__WEBPACK_IMPORTED_MODULE_2__["default"])(URL);
+    URL = `${_modules_api_js__WEBPACK_IMPORTED_MODULE_4__["default"].API}${query}`;
+    (0,_modules_show_js__WEBPACK_IMPORTED_MODULE_3__["default"])(URL);
     category.value = '';
     localStorage.setItem('myquery', JSON.stringify(query));
   }
 });
 
 const loadData = () => {
-  const showCategory = (0,_modules_getcategory_js__WEBPACK_IMPORTED_MODULE_4__["default"])();
-  URL = `${_modules_api_js__WEBPACK_IMPORTED_MODULE_3__["default"].API}${showCategory}`;
-  (0,_modules_show_js__WEBPACK_IMPORTED_MODULE_2__["default"])(URL);
-  const iconLikes = document.querySelector('.fa-heart');
-  console.log(iconLikes);
+  const showCategory = (0,_modules_getcategory_js__WEBPACK_IMPORTED_MODULE_5__["default"])();
+  URL = `${_modules_api_js__WEBPACK_IMPORTED_MODULE_4__["default"].API}${showCategory}`;
+  (0,_modules_show_js__WEBPACK_IMPORTED_MODULE_3__["default"])(URL);
 };
 
 loadData();
 
-const iconLikes = document.querySelector('.show-info');
-console.log(iconLikes);
-// iconLikes.addEventListener('click', (e) => {
-//   e.preventDefault;
-//   console.log('heart clicked');
-// })
-
+document.addEventListener('click', (e) => {
+  // e.preventDefault;
+  if (e.target.classList.contains('fas')) {
+    _modules_addComment_js__WEBPACK_IMPORTED_MODULE_6__["default"].postLikes(e.target.id);
+    (0,_modules_addhtmllikes_js__WEBPACK_IMPORTED_MODULE_7__["default"])(e.target.id);
+  }
+})
 
 
 
@@ -394,13 +399,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(11);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__);
 // Imports
 
 
+
+var ___CSS_LOADER_URL_IMPORT_0___ = new URL(/* asset import */ __webpack_require__(12), __webpack_require__.b);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@200;700&display=swap);"]);
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ":root {\r\n  --font: \"Poppins\", sans-serif;\r\n  --bgwhite: #fff;\r\n  --bgcontact: #6070ff;\r\n  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);\r\n  --bgbrown: #e5e5e5;\r\n  --bgreen: green;\r\n}\r\n\r\n* {\r\n  padding: 0;\r\n  margin: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  font-family: var(--font);\r\n}\r\n\r\n.main {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  margin-left: 5%;\r\n  margin-right: 5%;\r\n}\r\n\r\nheader {\r\n  display: flex;\r\n  justify-content: flex-start;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  margin: 20px 0;\r\n}\r\n\r\nheader img {\r\n  max-width: 60px;\r\n  margin: 0 16px;\r\n}\r\n\r\nheader a {\r\n  text-decoration: none;\r\n  margin: 0 16px;\r\n  font-size: x-large;\r\n  color: black;\r\n}\r\n\r\n.input-category {\r\n  width: 250px;\r\n  padding: 8px 16px;\r\n  border: 2px solid black;\r\n  font-size: larger;\r\n  font-weight: bold;\r\n  background-color: white;\r\n  box-shadow: 2px 2px black;\r\n  border-radius: 4px;\r\n}\r\n\r\n.show-container {\r\n  display: flex;\r\n  flex-direction: row;\r\n  flex-wrap: wrap;\r\n  justify-content: center;\r\n  width: 96vw;\r\n  margin: 16px 8vw;\r\n}\r\n\r\n.show-item {\r\n  width: 230px;\r\n\r\n  /* padding: 15px; */\r\n  margin: 15px;\r\n\r\n  /* margin: 24px 3vw; */\r\n  box-shadow: var(--box-shadow);\r\n  border: 1px solid var(--bgbrown);\r\n}\r\n\r\n.show-item img {\r\n  width: 100%;\r\n}\r\n\r\n.show-info {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  padding: 10px;\r\n}\r\n\r\n.show-info p {\r\n  font-weight: bold;\r\n  font-family: var(--font);\r\n}\r\n\r\n.summary {\r\n  padding: 10px;\r\n  text-align: justify;\r\n}\r\n\r\nbutton {\r\n  width: 200px;\r\n\r\n  /* border: 2px solid black; */\r\n\r\n  /* font-size: larger;\r\n  font-weight: bold; */\r\n  outline: none;\r\n  background-color: var(--bgbrown);\r\n  box-shadow: 1px 2px var(--bgbrown);\r\n  border-radius: 4px;\r\n  padding-left: 20px;\r\n  padding-right: 20px;\r\n  cursor: pointer;\r\n  margin-left: 20px;\r\n  margin-bottom: 10px;\r\n}\r\n\r\nfooter {\r\n  position: relative;\r\n  bottom: 0;\r\n  width: 100%;\r\n}\r\n\r\nfooter div {\r\n  margin-left: 5%;\r\n  margin-right: 5%;\r\n  font-size: 15px;\r\n  padding: 10px;\r\n}\r\n\r\n.popupflex {\r\n  display: flex;\r\n  flex-direction: row;\r\n  gap: 4%;\r\n  padding: 10px;\r\n}\r\n\r\n.popupflex img {\r\n  width: 20vh;\r\n}\r\n\r\n.popupflex ul li {\r\n  list-style-type: none;\r\n}\r\n\r\ninput,\r\ntextarea {\r\n  width: 100%;\r\n  margin-bottom: 5px;\r\n}\r\n\r\n.successMsg {\r\n  color: var(--bgreen);\r\n}\r\n\r\n.fa-heart {\r\n  cursor: pointer;\r\n}\r\n\r\n/********************** MODAL SECTION ****************************/\r\n.popup_modal {\r\n  display: none; /* Hidden by default */\r\n  position: fixed; /* Stay in place */\r\n  z-index: 1; /* Sit on top */\r\n  padding-top: 100px; /* Location of the box */\r\n  left: 0;\r\n  top: 0;\r\n  width: 100%; /* Full width */\r\n  height: 100%; /* Full height */\r\n  overflow: auto; /* Enable scroll if needed */\r\n  background-color: rgb(0, 0, 0); /* Fallback color */\r\n  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */\r\n}\r\n\r\n/* Modal Content */\r\n.popup_modal_content {\r\n  background-color: #fefefe;\r\n  margin: 0 auto;\r\n  padding: 20px;\r\n  border: 1px solid #888;\r\n  width: 60%;\r\n  height: auto;\r\n  border-radius: 8px;\r\n}\r\n\r\n/* The Close Button */\r\n.close_modal {\r\n  color: #aaa;\r\n  float: right;\r\n  font-size: 28px;\r\n  font-weight: bold;\r\n}\r\n\r\n.close_modal:hover,\r\n.close_modal:focus {\r\n  color: #000;\r\n  text-decoration: none;\r\n  cursor: pointer;\r\n}\r\n\r\n/********************** END OF MODAL SECTION ****************************/\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ":root {\r\n  --font: \"Poppins\", sans-serif;\r\n  --bgwhite: #fff;\r\n  --bgcontact: #6070ff;\r\n  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);\r\n  --bgbrown: #e5e5e5;\r\n  --bgreen: green;\r\n}\r\n\r\n* {\r\n  padding: 0;\r\n  margin: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  font-family: var(--font);\r\n  /* background-color: aquamarine; */\r\n  /* background-image: url('./images/bg.png'); */\r\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\r\n}\r\n\r\n.main {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  margin-left: 5%;\r\n  margin-right: 5%;\r\n}\r\n\r\nheader {\r\n  display: flex;\r\n  justify-content: flex-start;\r\n  flex-direction: row;\r\n  align-items: center;\r\n  margin: 20px 0;\r\n}\r\n\r\nheader img {\r\n  max-width: 60px;\r\n  margin: 0 16px;\r\n}\r\n\r\nheader a {\r\n  text-decoration: none;\r\n  margin: 0 16px;\r\n  font-size: x-large;\r\n  color: black;\r\n}\r\n\r\n.categories {\r\n  display: flex;\r\n}\r\n\r\n.show-counter {\r\n  font-weight: bold;\r\n  align-self: center;\r\n  margin-left: 32px;\r\n}\r\n\r\n.input-category {\r\n  width: 250px;\r\n  padding: 8px 16px;\r\n  border: 2px solid black;\r\n  font-size: larger;\r\n  font-weight: bold;\r\n  background-color: white;\r\n  box-shadow: 2px 2px black;\r\n  border-radius: 4px;\r\n  margin-right: 32px;\r\n}\r\n\r\n.show-container {\r\n  display: flex;\r\n  flex-direction: row;\r\n  flex-wrap: wrap;\r\n  justify-content: center;\r\n  width: 96vw;\r\n  margin: 16px 8vw;\r\n}\r\n\r\n.show-item {\r\n  width: 230px;\r\n\r\n  /* padding: 15px; */\r\n  margin: 15px;\r\n\r\n  /* margin: 24px 3vw; */\r\n  box-shadow: var(--box-shadow);\r\n  border: 1px solid var(--bgbrown);\r\n}\r\n\r\n.show-item img {\r\n  width: 100%;\r\n}\r\n\r\n.show-info {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  padding: 10px;\r\n}\r\n\r\n.show-info p {\r\n  font-weight: bold;\r\n  font-family: var(--font);\r\n}\r\n\r\n.summary {\r\n  padding: 10px;\r\n  text-align: justify;\r\n}\r\n\r\nbutton {\r\n  width: 200px;\r\n\r\n  /* border: 2px solid black; */\r\n\r\n  /* font-size: larger;\r\n  font-weight: bold; */\r\n  outline: none;\r\n  background-color: var(--bgbrown);\r\n  box-shadow: 1px 2px var(--bgbrown);\r\n  border-radius: 4px;\r\n  padding-left: 20px;\r\n  padding-right: 20px;\r\n  cursor: pointer;\r\n  margin-left: 20px;\r\n  margin-bottom: 10px;\r\n}\r\n\r\nfooter {\r\n  position: relative;\r\n  bottom: 0;\r\n  width: 100%;\r\n}\r\n\r\nfooter div {\r\n  margin-left: 5%;\r\n  margin-right: 5%;\r\n  font-size: 15px;\r\n  padding: 10px;\r\n}\r\n\r\n.popupflex {\r\n  display: flex;\r\n  flex-direction: row;\r\n  gap: 4%;\r\n  padding: 10px;\r\n}\r\n\r\n.popupflex img {\r\n  width: 20vh;\r\n}\r\n\r\n.popupflex ul li {\r\n  list-style-type: none;\r\n}\r\n\r\ninput,\r\ntextarea {\r\n  width: 100%;\r\n  margin-bottom: 5px;\r\n}\r\n\r\n.successMsg {\r\n  color: var(--bgreen);\r\n}\r\n\r\n.fa-heart {\r\n  cursor: pointer;\r\n}\r\n\r\n/********************** MODAL SECTION ****************************/\r\n.popup_modal {\r\n  display: none; /* Hidden by default */\r\n  position: fixed; /* Stay in place */\r\n  z-index: 1; /* Sit on top */\r\n  padding-top: 100px; /* Location of the box */\r\n  left: 0;\r\n  top: 0;\r\n  width: 100%; /* Full width */\r\n  height: 100%; /* Full height */\r\n  overflow: auto; /* Enable scroll if needed */\r\n  background-color: rgb(0, 0, 0); /* Fallback color */\r\n  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */\r\n}\r\n\r\n/* Modal Content */\r\n.popup_modal_content {\r\n  background-color: #fefefe;\r\n  margin: 0 auto;\r\n  padding: 20px;\r\n  border: 1px solid #888;\r\n  width: 60%;\r\n  height: auto;\r\n  border-radius: 8px;\r\n}\r\n\r\n/* The Close Button */\r\n.close_modal {\r\n  color: #aaa;\r\n  float: right;\r\n  font-size: 28px;\r\n  font-weight: bold;\r\n}\r\n\r\n.close_modal:hover,\r\n.close_modal:focus {\r\n  color: #000;\r\n  text-decoration: none;\r\n  cursor: pointer;\r\n}\r\n\r\n/********************** END OF MODAL SECTION ****************************/\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -524,22 +534,80 @@ module.exports = function (cssWithMappingToString) {
 
 /***/ }),
 /* 11 */
-/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+/***/ ((module) => {
 
-module.exports = __webpack_require__.p + "23abaa54e786530b2fb6.jpg";
+
+
+module.exports = function (url, options) {
+  if (!options) {
+    options = {};
+  }
+
+  if (!url) {
+    return url;
+  }
+
+  url = String(url.__esModule ? url.default : url); // If url is already wrapped in quotes, remove them
+
+  if (/^['"].*['"]$/.test(url)) {
+    url = url.slice(1, -1);
+  }
+
+  if (options.hash) {
+    url += options.hash;
+  } // Should url be wrapped?
+  // See https://drafts.csswg.org/css-values-3/#urls
+
+
+  if (/["'() \t\n]|(%20)/.test(url) || options.needQuotes) {
+    return "\"".concat(url.replace(/"/g, '\\"').replace(/\n/g, "\\n"), "\"");
+  }
+
+  return url;
+};
 
 /***/ }),
 /* 12 */
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+module.exports = __webpack_require__.p + "2a9970376567d16d81d5.png";
+
+/***/ }),
+/* 13 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _retrieveshow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(13);
-/* harmony import */ var _addhtmlshows_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(14);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "images/tv-logo.jpg");
+
+/***/ }),
+/* 14 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "images/bg.jpg");
+
+/***/ }),
+/* 15 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _retrieveshow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(16);
+/* harmony import */ var _addhtmlshows_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(17);
+/* harmony import */ var _displayshowcounter_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(22);
 
 
+
+
+let imageArr = [];
 
 const show = (URL) => {
   document.querySelectorAll('.show-item').forEach((e) => e.remove());
@@ -547,15 +615,21 @@ const show = (URL) => {
 
   promiseShow.then((show) => {
     show.forEach((e) => {
-      (0,_addhtmlshows_js__WEBPACK_IMPORTED_MODULE_1__["default"])(e.show.id, e.show.name, e.show.image.medium, e.show.summary);
+      if (e.show.image !== null) {
+        imageArr.push(e.show.image);
+        // console.log(e.show.summary);
+        (0,_addhtmlshows_js__WEBPACK_IMPORTED_MODULE_1__["default"])(e.show.id, e.show.name, e.show.image.medium, e.show.summary);
+      }
     });
+    (0,_displayshowcounter_js__WEBPACK_IMPORTED_MODULE_2__["default"])(imageArr.length);
+    imageArr = [];
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (show);
 
 
 /***/ }),
-/* 13 */
+/* 16 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -586,17 +660,17 @@ const postComment = async (url, body) => {
 
 
 /***/ }),
-/* 14 */
+/* 17 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _retrieveshow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(13);
-/* harmony import */ var _popup_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(15);
-/* harmony import */ var _retrievelikes_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(18);
-/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(17);
+/* harmony import */ var _retrieveshow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(16);
+/* harmony import */ var _popup_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(18);
+/* harmony import */ var _retrievelikes_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(21);
+/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(20);
 
 
 
@@ -621,11 +695,16 @@ const addhtmlShows = (id, name, image, summary) => {
   promiseLikes.then((like) => {
     like.forEach((e) => {
       if (Number(e.item_id) === id) {
+        // console.log(e.likes + '-' + id);
         mLikes = e.likes;
         if (e.item_id != null) {
-          document.getElementById('mylikes').innerHTML = `${mLikes} Likes`;
+          document.querySelectorAll('[data-id]').forEach((elem) => {
+            if(Number(elem.getAttribute('data-id')) === id) {
+              elem.innerHTML = `${mLikes} Likes`;
+            }
+          })
         }
-        // return true;
+       // return true;
       }
     });
   });
@@ -638,7 +717,7 @@ const addhtmlShows = (id, name, image, summary) => {
     <img src="${image}" alt="Shows">
     <div class='show-info'>
       <p>${name}</p>
-      <i class="fas fa-heart"> <small data-id="${id}" id='mylikes'>0 Likes</small></i>
+      <i class="fas fa-heart" id="${id}"> <small data-id="${id}" id='mylikes'>0 Likes</small> ${id}</i>
     </div>
     <div class="summary">${tx}</div>
     <button type="button" class="show_modal"  data-id="${id}">Comment</button>
@@ -668,16 +747,16 @@ window.onclick = function (event) {
 
 
 /***/ }),
-/* 15 */
+/* 18 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _addComment_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(16);
-/* harmony import */ var _retrieveshow_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(13);
-/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(17);
+/* harmony import */ var _addComment_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(19);
+/* harmony import */ var _retrieveshow_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(16);
+/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(20);
 
 
 
@@ -763,15 +842,15 @@ const popupForm = (e) => {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (popupForm);
 
 /***/ }),
-/* 16 */
+/* 19 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _retrieveshow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(13);
-/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(17);
+/* harmony import */ var _retrieveshow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(16);
+/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(20);
 
 
 
@@ -786,12 +865,21 @@ class AddComment {
       const postApiCall = await (0,_retrieveshow_js__WEBPACK_IMPORTED_MODULE_0__.postComment)(`${_api_js__WEBPACK_IMPORTED_MODULE_1__["default"].Inv + urlComment}`, mbody);
       return postApiCall;
     }
-}
 
+    static postLikes = async (itemID) => {
+      const mbody = {
+        item_id: itemID
+      };
+
+      const postLike = await (0,_retrieveshow_js__WEBPACK_IMPORTED_MODULE_0__.postComment)('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/x1XZKjTp3JZIGC168Q0T/likes/', mbody);
+      return postLike;
+    }
+
+}
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AddComment);
 
 /***/ }),
-/* 17 */
+/* 20 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -806,7 +894,7 @@ __webpack_require__.r(__webpack_exports__);
 });
 
 /***/ }),
-/* 18 */
+/* 21 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -821,7 +909,20 @@ const retrieveLikes = async () => {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (retrieveLikes);
 
 /***/ }),
-/* 19 */
+/* 22 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const showCounter = (shows) => {
+  document.querySelector('.show-counter').innerHTML = `Found (${shows})`;
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (showCounter);
+
+/***/ }),
+/* 23 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -834,6 +935,44 @@ const getCategory = () => {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getCategory);
+
+/***/ }),
+/* 24 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _retrievelikes_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(21);
+/* harmony import */ var _api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(20);
+
+
+
+const addhtmlLikes = (id) => {
+  let mLikes = 0;
+  const promiseLikes = (0,_retrievelikes_js__WEBPACK_IMPORTED_MODULE_0__["default"])(_api_js__WEBPACK_IMPORTED_MODULE_1__["default"].Likes);
+  promiseLikes.then((like) => {
+    like.forEach((e) => {
+      if (Number(e.item_id) === Number(id)) {
+        mLikes = e.likes + 1;
+        document.querySelectorAll('[data-id]').forEach((elem) => {
+          if(Number(elem.getAttribute('data-id')) === Number(id)) {
+            elem.innerHTML = `${mLikes} Likes`;
+          }
+        })
+      }
+      if (mLikes === 0) {
+        document.querySelectorAll('[data-id]').forEach((elem) => {
+          if(Number(elem.getAttribute('data-id')) === Number(id)) {
+            elem.innerHTML = `1 Likes`;
+          }
+        })
+      }
+    });
+  });
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (addhtmlLikes);
 
 /***/ })
 ],

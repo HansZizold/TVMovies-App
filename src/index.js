@@ -1,12 +1,10 @@
 import './style.css';
-import './images/tv-logo.jpg';
 import show from './modules/show.js';
 import baseURL from './modules/api.js';
 import getCategory from './modules/getcategory.js';
 // import { postComment } from './modules/retrieveshow.js';
 import AddComment from './modules/addComment.js';
-import addhtmlShows from './modules/addhtmlshows.js';
-
+import addhtmlLikes from './modules/addhtmllikes.js';
 
 // const defaultURL = 'https://api.tvmaze.com/search/shows?q=girls';
 let URL = '';
@@ -17,7 +15,7 @@ category.addEventListener('keypress', (e) => {
     e.preventDefault();
     const query = category.value;
     URL = `${baseURL.API}${query}`;
-    show(URL);
+    show(URL, query);
     category.value = '';
     localStorage.setItem('myquery', JSON.stringify(query));
   }
@@ -26,15 +24,15 @@ category.addEventListener('keypress', (e) => {
 const loadData = () => {
   const showCategory = getCategory();
   URL = `${baseURL.API}${showCategory}`;
-  show(URL);
+  show(URL, showCategory);
 };
 
 loadData();
 
 document.addEventListener('click', (e) => {
-  e.preventDefault;
-  if (e.target.classList.contains('fas')) {
+  // e.preventDefault;
+  if (e.target.classList.contains('fa-heart')) {
     AddComment.postLikes(e.target.id);
+    addhtmlLikes(e.target.id);
   }
-})
-
+});

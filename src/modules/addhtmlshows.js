@@ -22,21 +22,22 @@ const addhtmlShows = (id, name, image, summary) => {
   promiseLikes.then((like) => {
     like.forEach((e) => {
       if (Number(e.item_id) === id) {
-        console.log(e.likes + '-' + id);
+        // console.log(e.likes + '-' + id);
         mLikes = e.likes;
         if (e.item_id != null) {
           document.querySelectorAll('[data-id]').forEach((elem) => {
-            if(Number(elem.getAttribute('data-id')) === id) {
+            // console.log(elem.id + "===" + "mylikes");
+            if (Number(elem.getAttribute('data-id')) === id && elem.id === 'mylikes') {
               elem.innerHTML = `${mLikes} Likes`;
             }
-          })
+          });
         }
-       // return true;
+        // return true;
       }
     });
   });
 
-  const tx = summary !== null ? truncate(summary, 100, '...') : 'no summary';
+  const tx = summary !== null ? truncate(summary, 100, '...') : '<p>no summary</p>';
   const showContainer = document.querySelector('.show-container');
   const showItem = document.createElement('div');
   showItem.classList.add('show-item');
@@ -44,9 +45,9 @@ const addhtmlShows = (id, name, image, summary) => {
     <img src="${image}" alt="Shows">
     <div class='show-info'>
       <p>${name}</p>
-      <i class="fas fa-heart" id="${id}"> <small data-id="${id}" id='mylikes'>0 Likes</small> ${id}</i>
+      <i class="fas fa-heart" id="${id}"> <small data-id="${id}" id='mylikes'>0 Likes</small></i>
     </div>
-    <div class="summary">${tx}</div>
+    <div class="summary"><em>${tx}</em></div>
     <button type="button" class="show_modal"  data-id="${id}">Comment</button>
     <button type="button" class="loaded" reserve-id="${id}">Reservation</button>
     `;

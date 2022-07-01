@@ -17,6 +17,9 @@
 
 body {
   font-family: var(--font);
+  background-image: url('./images/bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .main {
@@ -29,15 +32,14 @@ body {
 
 header {
   display: flex;
-  justify-content: flex-start;
   flex-direction: row;
   align-items: center;
   margin: 20px 0;
 }
 
-header img {
-  max-width: 60px;
-  margin: 0 16px;
+header i {
+  /* max-width: 60px; */
+  margin: 0 64px 0 0;
 }
 
 header a {
@@ -47,15 +49,50 @@ header a {
   color: black;
 }
 
+.show-menu a {
+  font-weight: bold;
+  color: #2f4f4f;
+}
+
+.fa-tv {
+  font-size: 40px;
+  color: #2f4f4f;
+}
+
+.categories {
+  display: flex;
+}
+
+.show-counter {
+  width: 160px;
+  padding: 8px 16px;
+  font-weight: bold;
+  font-size: small;
+  align-self: center;
+  margin-left: 32px;
+  background-color: #2f4f4f;
+  box-shadow: 2px 2px #2f4f4f;
+  border-radius: 4px;
+  border: none;
+  color: #fff;
+  text-align: center;
+}
+
 .input-category {
   width: 250px;
   padding: 8px 16px;
-  border: 2px solid black;
   font-size: larger;
   font-weight: bold;
-  background-color: white;
-  box-shadow: 2px 2px black;
+  background-color: #2f4f4f;
+  box-shadow: 2px 2px #2f4f4f;
   border-radius: 4px;
+  border: none;
+  margin-right: 32px;
+  color: #fff;
+}
+
+.input-category::placeholder {
+  color: #fff;
 }
 
 .show-container {
@@ -75,7 +112,8 @@ header a {
 
   /* margin: 24px 3vw; */
   box-shadow: var(--box-shadow);
-  border: 1px solid var(--bgbrown);
+
+  /* border: 1px solid var(--bgbrown); */
 }
 
 .show-item img {
@@ -96,6 +134,12 @@ header a {
 .summary {
   padding: 10px;
   text-align: justify;
+  height: 96px;
+}
+
+.summary p {
+  font-size: 12px;
+  font-weight: bold;
 }
 
 button {
@@ -126,6 +170,8 @@ footer div {
   margin-left: 5%;
   margin-right: 5%;
   font-size: 15px;
+  font-weight: bold;
+  color: #2f4f4f;
   padding: 10px;
 }
 

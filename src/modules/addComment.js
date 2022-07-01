@@ -15,12 +15,11 @@ class AddComment {
 
     static postLikes = async (itemID) => {
       const mbody = {
-        item_id: itemID
+        item_id: itemID,
       };
 
       const postLike = await postComment('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/x1XZKjTp3JZIGC168Q0T/likes/', mbody);
       return postLike;
     }
-
 }
 export default AddComment;
