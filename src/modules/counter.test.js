@@ -1,6 +1,3 @@
-//import show from './show.js';
-//import baseURL from './api.js';
-
 jest.mock('./show.js');
 const Counter = require('./__mocks__/counter.js');
 
@@ -25,17 +22,3 @@ describe('Test counter for homepage items', () => {
     expect(counter.addCounter(nullData)).toBe(null);
   });
 });
-
-// // arrange
-// const query = 'boys';
-// const URL = `${baseURL.API}${query}`;
-
-// // act
-// const boysCount = show(URL);
-
-// // assert
-// describe('Show Counter', () => {
-//   test('verify that the number of shows with boys category is 10', () => {
-//     expect(boysCount).toBe(10);
-//   });
-// });

@@ -16,8 +16,6 @@ const popupForm = (e) => {
         content += `<p><b><small> ${e.creation_date}: </small></b>   ${e.comment} <small>by: ${e.username}</small></p>`;
         return true;
       });
-    } else {
-      // content += '<p class="text-center py-3">No comments availables</p>';
     }
     document.getElementById('listComment').innerHTML = content;
   });
@@ -62,7 +60,6 @@ const popupForm = (e) => {
   cForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const sendData = await AddComment.pushCommentToApi(itemID.value, username.value, commentPost.value, urlComment.value);
-    console.log(sendData);
     if (sendData === 'Created') {
       msg.textContent = 'Comment Sucessfully Added';
       content = '';

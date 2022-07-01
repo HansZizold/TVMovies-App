@@ -8,7 +8,6 @@ class AddComment {
         username,
         comment: commentPost,
       };
-
       const postApiCall = await postComment(`${baseURL.Inv + urlComment}`, mbody);
       return postApiCall;
     }
@@ -17,7 +16,6 @@ class AddComment {
       const mbody = {
         item_id: itemID,
       };
-
       const postLike = await postComment('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/x1XZKjTp3JZIGC168Q0T/likes/', mbody);
       return postLike;
     }
