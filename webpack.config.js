@@ -27,11 +27,11 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|svg|jpeg|gif)$/i,
         type: 'asset/resource',
       },
       {
-        test: /\.(gif|png|jpg)$/,
+        test: /\.(gif|jpg)$/,
         use: [
           {
             loader: 'file-loader',
