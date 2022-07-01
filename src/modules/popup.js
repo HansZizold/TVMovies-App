@@ -23,7 +23,7 @@ const popupForm = (e) => {
   });
 
   document.querySelector('#popup-section').innerHTML = `<div class="pop-container">
-    <h2>${e.name} </h2> <span>(5 likes)</span><hr/>
+    <h2>${e.name} </h2><hr/>
     <div class="popupflex">
     <img src="${e.image.medium}" />
     <ul>
