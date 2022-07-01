@@ -1,8 +1,8 @@
-import show from './show.js';
-import baseURL from './api.js';
+//import show from './show.js';
+//import baseURL from './api.js';
 
 jest.mock('./show.js');
-const Counter = require('./__mocks__/counter.js')
+const Counter = require('./__mocks__/counter.js');
 
 const counter = new Counter();
 const nullData = [];
