@@ -22,7 +22,11 @@
 
 ## Live Demo (if available)
 
-Coming soon...
+ [Live Version](https://hanszizold.github.io/Javascript-Capstone/dist/)
+
+## Presenting the Features of the project
+
+https://drive.google.com/file/d/1JqXfR7Ns11ieDOYP0ow5aElDBF_tetpH/view?usp=sharing
 
 ## Getting Started
 
