@@ -12,7 +12,6 @@ const postComment = async (url, body) => {
     },
     body: JSON.stringify(body),
   });
-  // const result = await res.json();
   const result = await res.text();
   return result;
 };

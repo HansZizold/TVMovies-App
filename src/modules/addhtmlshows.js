@@ -22,17 +22,14 @@ const addhtmlShows = (id, name, image, summary) => {
   promiseLikes.then((like) => {
     like.forEach((e) => {
       if (Number(e.item_id) === id) {
-        // console.log(e.likes + '-' + id);
         mLikes = e.likes;
         if (e.item_id != null) {
           document.querySelectorAll('[data-id]').forEach((elem) => {
-            // console.log(elem.id + "===" + "mylikes");
             if (Number(elem.getAttribute('data-id')) === id && elem.id === 'mylikes') {
               elem.innerHTML = `${mLikes} Likes`;
             }
           });
         }
-        // return true;
       }
     });
   });

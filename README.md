@@ -56,8 +56,8 @@ To get a local copy up and running follw these simple example steps:
 👤 **Ogiogio Victor**
 
 - GitHub:  [@githubhandle](https://github.com/ogiogiovictor)
--Twitter: [Ogiogio Victor](https://twitter.com/a0df623fb9d9482)
--LinkedIn:  [Ogiogio Victor](https://www.linkedin.com/in/ogiogio-victor-a096a0181/)
+- Twitter: [Ogiogio Victor](https://twitter.com/a0df623fb9d9482)
+- LinkedIn:  [Ogiogio Victor](https://www.linkedin.com/in/ogiogio-victor-a096a0181/)
 
 👤 **Hans P. Zizold**
 
