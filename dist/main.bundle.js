@@ -25,7 +25,7 @@ category.addEventListener('keypress', (e) => {
     e.preventDefault();
     const query = category.value;
     URL = `${_modules_api_js__WEBPACK_IMPORTED_MODULE_2__["default"].API}${query}`;
-    (0,_modules_show_js__WEBPACK_IMPORTED_MODULE_1__["default"])(URL);
+    (0,_modules_show_js__WEBPACK_IMPORTED_MODULE_1__["default"])(URL, query);
     category.value = '';
     localStorage.setItem('myquery', JSON.stringify(query));
   }
@@ -34,13 +34,12 @@ category.addEventListener('keypress', (e) => {
 const loadData = () => {
   const showCategory = (0,_modules_getcategory_js__WEBPACK_IMPORTED_MODULE_3__["default"])();
   URL = `${_modules_api_js__WEBPACK_IMPORTED_MODULE_2__["default"].API}${showCategory}`;
-  (0,_modules_show_js__WEBPACK_IMPORTED_MODULE_1__["default"])(URL);
+  (0,_modules_show_js__WEBPACK_IMPORTED_MODULE_1__["default"])(URL, showCategory);
 };
 
 loadData();
 
 document.addEventListener('click', (e) => {
-  e.preventDefault();
   if (e.target.classList.contains('fa-heart')) {
     _modules_addComment_js__WEBPACK_IMPORTED_MODULE_4__["default"].postLikes(e.target.id);
     (0,_modules_addhtmllikes_js__WEBPACK_IMPORTED_MODULE_5__["default"])(e.target.id);
@@ -666,17 +665,14 @@ const addhtmlShows = (id, name, image, summary) => {
   promiseLikes.then((like) => {
     like.forEach((e) => {
       if (Number(e.item_id) === id) {
-        // console.log(e.likes + '-' + id);
         mLikes = e.likes;
         if (e.item_id != null) {
           document.querySelectorAll('[data-id]').forEach((elem) => {
-            // console.log(elem.id + "===" + "mylikes");
             if (Number(elem.getAttribute('data-id')) === id && elem.id === 'mylikes') {
               elem.innerHTML = `${mLikes} Likes`;
             }
           });
         }
-        // return true;
       }
     });
   });
@@ -747,8 +743,6 @@ const popupForm = (e) => {
         content += `<p><b><small> ${e.creation_date}: </small></b>   ${e.comment} <small>by: ${e.username}</small></p>`;
         return true;
       });
-    } else {
-      // content += '<p class="text-center py-3">No comments availables</p>';
     }
     document.getElementById('listComment').innerHTML = content;
   });
@@ -793,7 +787,6 @@ const popupForm = (e) => {
   cForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const sendData = await _addComment_js__WEBPACK_IMPORTED_MODULE_0__["default"].pushCommentToApi(itemID.value, username.value, commentPost.value, urlComment.value);
-    console.log(sendData);
     if (sendData === 'Created') {
       msg.textContent = 'Comment Sucessfully Added';
       content = '';
@@ -812,6 +805,7 @@ const popupForm = (e) => {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (popupForm);
+
 
 /***/ }),
 /* 17 */
@@ -833,7 +827,6 @@ class AddComment {
         username,
         comment: commentPost,
       };
-
       const postApiCall = await (0,_retrieveshow_js__WEBPACK_IMPORTED_MODULE_0__.postComment)(`${_api_js__WEBPACK_IMPORTED_MODULE_1__["default"].Inv + urlComment}`, mbody);
       return postApiCall;
     }
@@ -842,7 +835,6 @@ class AddComment {
       const mbody = {
         item_id: itemID,
       };
-
       const postLike = await (0,_retrieveshow_js__WEBPACK_IMPORTED_MODULE_0__.postComment)('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/x1XZKjTp3JZIGC168Q0T/likes/', mbody);
       return postLike;
     }
@@ -864,6 +856,7 @@ __webpack_require__.r(__webpack_exports__);
   Cmt: 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/x1XZKjTp3JZIGC168Q0T/comments?item_id=',
   Likes: 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi//apps/x1XZKjTp3JZIGC168Q0T/likes/',
 });
+
 
 /***/ }),
 /* 19 */
@@ -894,6 +887,7 @@ const showCounter = (shows) => {
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (showCounter);
 
+
 /***/ }),
 /* 21 */
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
@@ -906,8 +900,8 @@ const getCategory = () => {
   const category = JSON.parse(localStorage.getItem('myquery'));
   return category;
 };
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getCategory);
+
 
 /***/ }),
 /* 22 */
